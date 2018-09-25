@@ -8,11 +8,10 @@
 def main():
 
     # get user's first and last names
-    first = input("Enter your first name: ")
-    last = input("Enter your last name: ")
+    nameList = name()
     
     # TODO modify this to generate a Marist-style username
-    uname = first + "." + last
+    uname = nameList[0] + "." + nameList[1]
 
     # ask user to create a new password
     passwd = input("Create a new password: ")
@@ -24,6 +23,11 @@ def main():
     print("The force is strong in this one…")
     print("Account configured. Your new email address is",
         uname + "@marist.edu")
+
+def name():
+    first = input("Enter your first name: ")
+    last = input("Enter your last name: ")
+    return [first,last]
 
 
 main()
