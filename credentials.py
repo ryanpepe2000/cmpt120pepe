@@ -14,7 +14,7 @@ def main():
     uname = maristUName(nameList[0],nameList[1])
 
     sPassword = createPassword()
-    strongPassword(sPassword)
+    checkPassword(sPassword)
     
     print("The force is strong in this one…")
     print("Account configured. Your new email address is",
@@ -38,7 +38,7 @@ def createPassword():
 
 
 # Creates a function that checks a password's strength.
-def strongPassword(passwd):
+def checkPassword(passwd):
     while len(passwd) < 8:
         print("Fool of a Took! That password is feeble!")
         passwd = input("Create a new password: ")
