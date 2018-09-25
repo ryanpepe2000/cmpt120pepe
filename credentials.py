@@ -22,8 +22,8 @@ def main():
 
 # Creates function that returns a list from user's first and last name.
 def name():
-    first = input("Enter your first name: ")
-    last = input("Enter your last name: ")
+    first = input("Enter your first name: ").lower()
+    last = input("Enter your last name: ").lower()
     return [first,last]
 
 # Creates function that returns user's first and last name seperated
@@ -37,7 +37,7 @@ def createPassword():
     return passwd
 
 
-# Creates a function that checks password strength.
+# Creates a function that checks a password's strength.
 def strongPassword(passwd):
     while len(passwd) < 8:
         print("Fool of a Took! That password is feeble!")
