@@ -7,27 +7,45 @@
 
 def main():
 
-    # get user's first and last names
+    # Assigns first and last name input to the list 'nameList'
     nameList = name()
     
-    # TODO modify this to generate a Marist-style username
-    uname = nameList[0] + "." + nameList[1]
+    # Assigns mastistUName function to the 'uname' variable.
+    uname = maristUName(nameList[0],nameList[1])
 
-    # ask user to create a new password
-    passwd = input("Create a new password: ")
-
-    # TODO modify this to ensure the password has at least 8 characters
-    while len(passwd) < 8:
-        print("Fool of a Took! That password is feeble!")
-        passwd = input("Create a new password: ")
+    sPassword = createPassword()
+    strongPassword(sPassword)
+    
     print("The force is strong in this one…")
     print("Account configured. Your new email address is",
         uname + "@marist.edu")
 
+# Creates function that returns a list from user's first and last name.
 def name():
     first = input("Enter your first name: ")
     last = input("Enter your last name: ")
     return [first,last]
+
+# Creates function that returns user's first and last name seperated
+# by '.' as a string.
+def maristUName(first,last):
+    return first + "." + last
+
+# Creates a function that allows user input to be stored as a password.
+def createPassword():
+    passwd = input("Create a new password: ")
+    return passwd
+
+
+# Creates a function that checks password strength.
+def strongPassword(passwd):
+    while len(passwd) < 8:
+        print("Fool of a Took! That password is feeble!")
+        passwd = input("Create a new password: ")
+    return passwd
+
+
+    
 
 
 main()
