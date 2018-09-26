@@ -65,6 +65,4 @@ def caseSensitive(passwd):
     else:
         return True
     
-
-
 main()
