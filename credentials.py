@@ -14,6 +14,7 @@ def main():
     uname = maristUName(nameList[0],nameList[1])
 
     sPassword = createPassword()
+    
     checkPassword(sPassword)
     
     print("The force is strong in this one…")
@@ -39,12 +40,19 @@ def createPassword():
 
 # Creates a function that checks a password's strength.
 def checkPassword(passwd):
-    while len(passwd) < 8:
+
+    if strongPassword(passwd) == False:
         print("Fool of a Took! That password is feeble!")
         passwd = input("Create a new password: ")
-    return passwd
 
+    elif strongPassword(passwd) == True: 
+        return passwd
 
+def strongPassword(passwd):
+    if len(passwd) < 8:
+        return False
+    elif len(passwd) >= 8:
+        return True
     
 
 
