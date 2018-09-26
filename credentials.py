@@ -3,8 +3,6 @@
 # Author: Ryan Pepe
 # Created: 2018-09-25
 
-
-
 def main():
 
     # Assigns first and last name input to the list 'nameList'
@@ -41,17 +39,30 @@ def createPassword():
 # Creates a function that checks a password's strength.
 def checkPassword(passwd):
 
-    if strongPassword(passwd) == False:
-        print("Fool of a Took! That password is feeble!")
+    while strongPassword(passwd) and caseSensitive(passwd) == False:
+        print()
+        print("Please enter a password that has more than 8 characters")
+        print("and includes both an upper case and lower case letter.")
+        print()
         passwd = input("Create a new password: ")
 
-    elif strongPassword(passwd) == True: 
+    if strongPassword(passwd) == True: 
         return passwd
 
+# Creates function that checks if the password has 8 characters.
 def strongPassword(passwd):
     if len(passwd) < 8:
         return False
     elif len(passwd) >= 8:
+        return True
+
+# Creates function that checks if password has both upper and lower case characters.
+def caseSensitive(passwd):
+    if passwd == passwd.lower():
+        return False
+    if passwd == passwd.upper():
+        return False
+    else:
         return True
     
 
