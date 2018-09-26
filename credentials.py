@@ -51,19 +51,14 @@ def checkPassword(passwd):
     if strongPassword(passwd) == True: 
         return passwd
 
-# Creates function that checks if the password has 8 characters.
+# Creates function that checks if the password is strong.
 def strongPassword(passwd):
     if len(passwd) < 8:
-        if passwd == passwd.lower():
-            return False
-        if passwd == passwd.upper():
-            return False 
-    elif len(passwd) >= 8:
-        if passwd == passwd.lower():
-            return False
-        if passwd == passwd.upper():
+        return False
+    if len(passwd) >= 8:
+        if passwd == passwd.lower() or passwd == passwd.upper():
             return False
     else:
         return True
-    
+
 main()
