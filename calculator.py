@@ -10,6 +10,50 @@ def main():
     # of whether the user inputted spaces in between operators.
     equationList = equation.replace("+", " + ").replace("-"," - ").replace("*"," * ").replace("/"," / ").split()
 
+    # Creates blank lists that for each operation and the solution.
+    first = []
+    second = []
+
+    solution = []
     
-    
+    order(equationList, first, second)
+    print(first)
+    print(second)
+
+## Function that marks the location of each arithmetic operator in seperate lists
+def order(equation, first, second):
+    for i, e in enumerate(equation):
+        if e == "*" or e == "/":
+            first.append(i)
+    for i, e in enumerate(equation):
+        if e == "+" or e == "-":
+            second.append(i)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 main()
+
+
