@@ -7,12 +7,14 @@ def main():
     name = ""
     while True:
         print("Thinking of an animal...\n")
-        name = str(input("Guess the type of animal: "))
+        name = str(input("Guess the type of animal: ")).lower()
         if name == "pig":
             print("\nCongratulations, you guessed correctly!")
             break
+        elif name == "quit":
+            break
         else:
-            print("\nSorry, you guessed wrong. Try again!")
+            print("\nSorry, you guessed wrong. Try again!\n")
 main()
             
     
