@@ -11,14 +11,14 @@ def main():
     # of whether the user inputted spaces in between operators.
     expressionList = expression.replace("+", " + ").replace("*"," * ").replace("/"," / ").split()
 
-    # First computes multiplication/division, then computes addition/subtraction.
+    # First computes multiplication/division, then computes addition/subtraction by .
     multDiv(expressionList)
     addSub(expressionList)
 
     # Displays solution
     print("\nSolution: ", expressionList[0])
 
-# Function that computes multiplication/division.          
+# Function that computes multiplication/division by enumerating list ([i, e] = [array, string])..          
 def multDiv(ex):
     while "*" in ex or "/" in ex:
         for i, e in enumerate(ex):
@@ -31,7 +31,7 @@ def multDiv(ex):
                 del ex[i+1],ex[i-1]
                 break
 
-# Function that computes addition/subtraction.          
+# Function that computes addition/subtraction by enumerating list ([i, e] = [array, string]).          
 def addSub(ex):
     while "+" in ex or "-" in ex:
         for i, e in enumerate(ex):
