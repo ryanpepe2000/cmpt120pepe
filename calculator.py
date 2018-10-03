@@ -4,55 +4,50 @@
 # Author: Ryan Pepe
 
 def main():
-    equation = str(input("Enter an equation with any basic arithmetic operator: "))
+    expression = str(input("Enter an expression with any basic arithmetic operator: "))
 
     # Turns user's input into a list of each number and arithmetic operator, regardless
     # of whether the user inputted spaces in between operators.
-    equationList = equation.replace("+", " + ").replace("*"," * ").replace("/"," / ").split()
-    print(equationList)
+    expressionList = expression.replace("+", " + ").replace("*"," * ").replace("/"," / ").split()
+
     # First computes multiplication/division, then computes addition/subtraction.
-    multDiv(equationList)
-    addSub(equationList)
+    multDiv(expressionList)
+    addSub(expressionList)
 
     # Displays solution
     print()
-    print("Solution: ", equationList[0])
+    print("Solution: ", expressionList[0])
 
 # Function that computes multiplication/division.          
-def multDiv(eq):
-    while "*" in eq or "/" in eq:
-        for i, e in enumerate(eq):
+def multDiv(ex):
+    while "*" in ex or "/" in ex:
+        for i, e in enumerate(ex):
             if e == "*":
-                eq[i] = float(eq[i-1]) * float(eq[i+1])
-                del eq[i+1],eq[i-1]
+                ex[i] = float(ex[i-1]) * float(ex[i+1])
+                del ex[i+1],ex[i-1]
                 break
             elif e == "/":
-                eq[i] = float(eq[i-1]) / float(eq[i+1])
-                del eq[i+1],eq[i-1]
+                ex[i] = float(ex[i-1]) / float(ex[i+1])
+                del ex[i+1],ex[i-1]
                 break
-    print(eq)
-    
+
 # Function that computes addition/subtraction.          
-def addSub(eq):
-    while "+" in eq or "-" in eq:
-        for i, e in enumerate(eq):
+def addSub(ex):
+    while "+" in ex or "-" in ex:
+        for i, e in enumerate(ex):
             if e == "+":
-                eq[i] = float(eq[i+1]) + float(eq[i-1])
-                del eq[i+1],eq[i-1]
+                ex[i] = float(ex[i+1]) + float(ex[i-1])
+                del ex[i+1],ex[i-1]
                 break
             elif e == "-":
-                eq[i] = float(eq[i-1]) - float(eq[i+1])
-                del eq[i+1],eq[i-1]
+                ex[i] = float(ex[i-1]) - float(ex[i+1])
+                del ex[i+1],ex[i-1]
                 break
-               
-    print(eq)
     
 main()
 
-#### 8 / 2 + 4 * 4 - 3 + 2 * 2 / 6 DOES NOT WORK == 16.3333333333
-## TRULY EQUALS 17.6666666666666666666
+#Class Project Tips
 
-#Class PRoject notes
 # range(1, len(list), 2)
 # Looks at all operators
 #
