@@ -16,8 +16,7 @@ def main():
     addSub(expressionList)
 
     # Displays solution
-    print()
-    print("Solution: ", expressionList[0])
+    print("\nSolution: ", expressionList[0])
 
 # Function that computes multiplication/division.          
 def multDiv(ex):
@@ -46,18 +45,3 @@ def addSub(ex):
                 break
     
 main()
-
-#Class Project Tips
-
-# range(1, len(list), 2)
-# Looks at all operators
-#
-# while len((list) > 1
-
-#for i in range(1,len(list),2)
-# if list[i] == "*"
-#   result = float(list[i-1]) * float(list[i+1])
-#    del list[i-1:i+1]
-#   list.insert(i-1, result)
-#   break
-# elif list[i] == "/"
