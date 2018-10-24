@@ -20,26 +20,26 @@ def printBoard(board):
     pass
 
 def markBoard(board, row, col, player):
-    # check to see whether the desired square is blank
-    # if so, set it to the player number
+    if board[row][col] == 0:
+        board[row][col] = player
     pass
 
 def getPlayerMove():
-    x,y = input("Enter the row and column (x,y): ") # prompt the user separately for the row and column numbers
-    return x,y # then return that row and column instead of (0,0)
+    x = int(input("Enter the row: "))
+    y = int(input("Enter the column: "))
+    return x,y 
 
 def hasBlanks(board):
     for row in range(3):
-        for square in range(3):
-            if board[row][square] == 0:
-                return True 
-            else:
-                return False
+        for col in range(3):
+            if board[row][col] == 0:
+                return True
+    return False
 
 def main():
     board = [[0,0,0],
              [0,0,0],
-             [0,0,0]]  # TODO replace this with a three-by-three matrix of zeros
+             [0,0,0]]  
     player = 1
     while hasBlanks(board):
         printBoard(board)
