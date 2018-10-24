@@ -18,7 +18,7 @@ def main():
     # Displays solution
     print("\nSolution: ", expressionList[0])
 
-# Function that computes multiplication/division by enumerating list ([i, e] = [array, string])..          
+# Function that computes multiplication/division by enumerating list ([i, e] = [array, string]).         
 def multDiv(ex):
     while "*" in ex or "/" in ex:
         for i, e in enumerate(ex):
@@ -45,3 +45,4 @@ def addSub(ex):
                 break
     
 main()
+
