@@ -43,7 +43,34 @@ def click(win, keys):
 
         if button.p1.x < mouse.x < button.p2.x and button.p1.y < mouse.y < button.p2.y:
             return(keys[e][2])
-    
+
+def createNumber(win,numList,keyList):
+    num = []
+    while True:
+        mouse = click(win,keyList)
+        try:
+            integer = int(mouse)
+            if type(integer) is int:
+                num.append(integer)
+            elif str(integer) == ".":
+                num.append(click(win,keyList))
+            print(num)
+            
+        except:
+            if mouse == ".":
+                num.append(".")
+            else:
+                numList.append("".join(str(e) for e in num))
+                break
+
+def createSymbol(win,numList,keyList):
+    mouse = click(win,keyList)
+    if mouse == "*" or mouse == "/" or mouse == "+" or mouse == "-":
+        numList.append(mouse)
+        
+            
+
+
 def main():
     numberList = []
     keyList = [[0,0,"+/-","orange"],     [1,0,"0","navajoWhite"], [2,0,".","orange"],        [3,0,"=","orange"],
@@ -59,8 +86,8 @@ def main():
     win.setCoords(0.0, 0.0, 4.0, 6.0)
     
     renderObjects(keys, win, screen, screenText)
-    while True:
-        # Appends numberList with text
-        numberList.append(click(win,keyList))
-        print(numberList)
+
+    createNumber(win,numberList,keyList)
+    createSymbol(win,numberList,keyList)
+    print(numberList)
 main()
