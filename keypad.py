@@ -3,6 +3,7 @@
 
 from graphics import *
 
+
 def createButton(values):
     p1 = Point(values[0], values[1])
     p2 = Point(values[0]+ 1, values[1] + 1)
@@ -34,12 +35,21 @@ def renderObjects(keys, win, screen, screenText):
     screen.draw(win)
     screenText.draw(win)
 
+def click(win, keys):
+    mouse = win.getMouse()
+    
+    for e, key in enumerate(keys):
+        button, label = createButton(key)
 
+        if button.p1.x < mouse.x < button.p2.x and button.p1.y < mouse.y < button.p2.y:
+            return(keys[e][2])
+    
 def main():
+    numberList = []
     keyList = [[0,0,"+/-","orange"],     [1,0,"0","navajoWhite"], [2,0,".","orange"],        [3,0,"=","orange"],
               [0,1,"1","navajoWhite"],   [1,1,"2","navajoWhite"], [2,1,"3","navajoWhite"],   [3,1,"+","orange"],
               [0,2,"4","navajoWhite"],   [1,2,"5","navajoWhite"], [2,2,"6","navajoWhite"],   [3,2,"-","orange"],
-              [0,3,"7","navajoWhite"],   [1,3,"8","navajoWhite"], [2,3,"9","navajoWhite"],   [3,3,"x","orange"],
+              [0,3,"7","navajoWhite"],   [1,3,"8","navajoWhite"], [2,3,"9","navajoWhite"],   [3,3,"*","orange"],
               [0,4,"","white"],          [1,4,"","white"],        [2,4,"Del","orange"],      [3,4,"/","orange"]]
 
     keys = createKeypad(keyList)
@@ -49,5 +59,8 @@ def main():
     win.setCoords(0.0, 0.0, 4.0, 6.0)
     
     renderObjects(keys, win, screen, screenText)
-
+    while True:
+        # Appends numberList with text
+        numberList.append(click(win,keyList))
+        print(numberList)
 main()
