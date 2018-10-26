@@ -45,13 +45,13 @@ def click(win, keys):
             return(keys[e][2])
 
 def createNumber(win,num,numList,keyList,mouse, screenText):
-    if mouse != "*" and mouse != "/" and mouse != "+" and mouse != "-" and mouse != "=" and mouse != "+/-":
+    if mouse != "*" and mouse != "/" and mouse != "+" and mouse != "-" and mouse != "=" and mouse != "+/-" and mouse != "Del":
         if mouse != ".":
             num.append(str(mouse))
         elif mouse == ".":
             num.append(".")
         print(num)
-        screenText = num
+       
         
     elif mouse == "*" or mouse == "/" or mouse == "+" or mouse == "-":
         try:
@@ -79,22 +79,37 @@ def createNumber(win,num,numList,keyList,mouse, screenText):
 
         print(numList)
      
-    
+    elif mouse == "Del":
+        numList.clear() 
+        num.clear()
+        screenText.setText("")
+        
     elif mouse == "=":
-        numList.append("".join(num))
-        print(numList)
+        try:
+            if float(numList[-1]) > 0:
+                numList.append("".join(num))
+                print(numList)
+        except:
+            numList.append("".join(num))
+            print(numList)
 
+# Sets text in screen to the list of values.
+def display(win,num,numList,screenText):
+    screenText.setText(" ".join(numList))
 
-def createList(win,numList,keyList,screenText):
+# Loops creation of numbers in list and display of them. 
+def loopCalc(win,screen,numList,keyList,screenText):
     num = []
     while True:
 
             mouse = click(win,keyList)
             createNumber(win,num,numList,keyList,mouse,screenText)
+            display(win, num, numList,screenText)
             print(numList)
 
 def main():
     numberList = []
+    #List containing coordinates, values, and colors for each button.
     keyList = [[0,0,"+/-","orange"],     [1,0,"0","navajoWhite"], [2,0,".","orange"],        [3,0,"=","orange"],
               [0,1,"1","navajoWhite"],   [1,1,"2","navajoWhite"], [2,1,"3","navajoWhite"],   [3,1,"+","orange"],
               [0,2,"4","navajoWhite"],   [1,2,"5","navajoWhite"], [2,2,"6","navajoWhite"],   [3,2,"-","orange"],
@@ -108,5 +123,6 @@ def main():
     win.setCoords(0.0, 0.0, 4.0, 6.0)
     
     renderObjects(keys, win, screen, screenText)
-    createList(win,numberList,keyList,screenText)
+    loopCalc(win,screen,numberList,keyList,screenText)
+    
 main()
