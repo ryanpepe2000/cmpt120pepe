@@ -4,19 +4,19 @@
 # Author: Ryan Pepe
 
 
-def main():
-    expression = str(input("Enter an expression with any basic arithmetic operator: "))
+def main(expressionList):
+
 
     # Turns user's input into a list of each number and arithmetic operator, regardless
     # of whether the user inputted spaces in between operators.
-    expressionList = expression.replace("+", " + ").replace("*"," * ").replace("/"," / ").split()
+    #expressionList = expression.replace("+", " + ").replace("*"," * ").replace("/"," / ").split()
 
     # First computes multiplication/division, then computes addition/subtraction by .
     multDiv(expressionList)
     addSub(expressionList)
 
     # Displays solution
-    print("\nSolution: ", expressionList[0])
+    return (expressionList[0])
 
 # Function that computes multiplication/division by enumerating list ([i, e] = [array, string]).         
 def multDiv(ex):
@@ -44,5 +44,4 @@ def addSub(ex):
                 del ex[i+1],ex[i-1]
                 break
     
-main()
 
