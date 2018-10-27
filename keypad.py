@@ -65,6 +65,7 @@ def createNumber(win,num,numList,keyList,mouse, screenText):
         elif mouse == ".":
             num.append(".")
         print(num)
+        screenText.setText(num)
        
     # ARITHMETIC OPERATORS  
     elif mouse == "*" or mouse == "/" or mouse == "+" or mouse == "-":
@@ -113,17 +114,25 @@ def createNumber(win,num,numList,keyList,mouse, screenText):
 
         
 # Sets text in screen to the list of values.
-def display(win,num,numList,screenText):
-    screenText.setText(" ".join(numList))
-
+def display(win,i,num,numList,screenText):
+    print(i)
+    if i % 2 == 0:
+        screenText.setText(" ".join(numList))
+        return i + 1
+    else:
+        screenText.setText("".join(num))
+        return i
 # Loops creation of numbers in list and display of them. 
 def loopCalc(win,screen,numList,keyList,screenText):
     num = []
+    i = 1
     while True:
 
             mouse = click(win,keyList)
             createNumber(win,num,numList,keyList,mouse,screenText)
-            display(win, num, numList,screenText)
+
+            isplayScreen = display(win,i, num, numList,screenText)
+            
 
             # Calls to calculate.py to compute solution
             if mouse == "=":
