@@ -3,6 +3,7 @@
 from graphics import *
 from calculator_functions import *
 
+# Creates buttons based on the coordinates in keyList array
 def createButton(values):
     p1 = Point(values[0] + .025, values[1] + .025)
     p2 = Point(values[0] + .99, values[1] + .99)
@@ -10,9 +11,9 @@ def createButton(values):
     button.setFill(values[3])
     button.setOutline(values[3])
     label = Text(Point(values[0] + .5, values[1] + .5), values[2])
-    label.setStyle("bold")
     return button, label
 
+# Traverses list and makes an array of button objects and text objects.
 def createKeypad(lst):
     keys = []
     for key in lst:
@@ -20,6 +21,7 @@ def createKeypad(lst):
         keys.append([button, label])
     return keys
 
+# Draws each individual key
 def renderKeys(keys, win):
     for key in keys:
         key[0].draw(win)
@@ -37,8 +39,9 @@ def getButton(click, keyList):
                     if keyList[j][2] in ['*','/','+','-']:
                         return " " + keyList[j][2] + " "
                     else:
-                        return keyList[j][2]        
-
+                        return keyList[j][2]
+                    
+# Creates a graphical window, display box, and text to represent output
 def createDisplay(keyList):
     keys = createKeypad(keyList)
 
@@ -55,6 +58,8 @@ def createDisplay(keyList):
     return win, display, text
 
 def main():
+
+    # An array of coordinates, key value, and button color.
     keyList = [[0,0,"+/-","orange"],     [1,0,"0","navajoWhite"], [2,0,".","orange"],        [3,0,"=","orange"],
               [0,1,"1","navajoWhite"],   [1,1,"2","navajoWhite"], [2,1,"3","navajoWhite"],   [3,1,"+","orange"],
               [0,2,"4","navajoWhite"],   [1,2,"5","navajoWhite"], [2,2,"6","navajoWhite"],   [3,2,"-","orange"],
@@ -102,6 +107,9 @@ def main():
 
 
         # Handles the four memory buttons (add, subtract, recall, clear)
+
+        #############################################################
+
         elif buttonText == "M+":
             memory = memory + float(solve(equation.split()))
         elif buttonText == "M-":
@@ -110,11 +118,14 @@ def main():
             equation = str(memory)
         elif buttonText == "MC":
             memory = 0.0
-
-        # Occurs whenever a number is clicked
-        
+            
+        ##############################################################
+            
+        # Concatenates equation string with whatever number is clicked.
         else:
             equation = equation + buttonText
+            
+        # After EACH button is pressed, the display's text is altered    
         text.setText(equation)
         print(equation)
         
