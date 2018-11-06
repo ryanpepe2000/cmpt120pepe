@@ -53,9 +53,13 @@ def createDisplay(keyList):
     display.draw(win)
     text = Text(Point(2,6.5), "")
     text.draw(win)
+    memText = Text(Point(3.3,6.2),"")
+    memText.setSize(10)
+    memText.draw(win)
+                   
 
     renderKeys(keys, win)
-    return win, display, text
+    return win, display, text, memText
 
 def main():
 
@@ -67,7 +71,7 @@ def main():
               [0,4,"Quit","orange"],     [1,4,"C","orange"],      [2,4,"CE","orange"],       [3,4,"/","orange"],
               [0,5,"M+","silver"],       [1,5,"M-","silver"],     [2,5,"MR","silver"],       [3,5,"MC","silver"]]
 
-    win, display, text = createDisplay(keyList)
+    win, display, text, memText = createDisplay(keyList)
 
     equation = ""
     memory = 0.0
@@ -117,12 +121,16 @@ def main():
 
             elif buttonText == "M+":
                 memory = memory + float(solve(equation.split()))
+                memText.setText("mem: " + str(memory))
             elif buttonText == "M-":
                 memory = memory - float(solve(equation.split()))
+                memText.setText("mem: " + str(memory))
             elif buttonText == "MR":
                 equation = str(memory)
+                memText.setText("mem: " + str(memory))
             elif buttonText == "MC":
                 memory = 0.0
+                memText.setText("mem: " + str(memory))
                 
             ##############################################################
                 
