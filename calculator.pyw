@@ -90,10 +90,9 @@ def main():
                 lastDigit = lastDigit * -1
                 equation = " ".join(equation.split()[:-1]) + " " + str(lastDigit)
                 
-            # Clears the entire calculator and memory
+            # Clears the entire calculator
             elif buttonText == "C":
                 result = ""
-                memory = 0.0
                 equation = str(result)
 
             # Clears a single entry from calculator
