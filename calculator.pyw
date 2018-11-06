@@ -77,6 +77,10 @@ def main():
         buttonText = getButton(click,keyList)
         print(buttonText)
 
+        # If an error is returned, clicking will reset calculator.
+        if equation == "Error":
+            equation = ""
+            
         # Attempts to performs calculator functions.
         try:
             # Solves the equation in calculator
