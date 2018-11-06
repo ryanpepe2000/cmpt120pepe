@@ -77,53 +77,59 @@ def main():
         buttonText = getButton(click,keyList)
         print(buttonText)
 
-        # Solves the equation in calculator
-        if buttonText == "=": 
-            result = solve(equation.split())
-            equation = str(result)
+        # Attempts to performs calculator functions.
+        try:
+            # Solves the equation in calculator
+            if buttonText == "=": 
+                result = solve(equation.split())
+                equation = str(result)
 
-        # Multiplies last digit in equation by -1 and replaces existing last digit
-        elif buttonText == "+/-":
-            lastDigit = float(equation.split()[-1])
-            lastDigit = lastDigit * -1
-            equation = " ".join(equation.split()[:-1]) + " " + str(lastDigit)
-            
-        # Clears the entire calculator and memory
-        elif buttonText == "C":
-            result = ""
-            memory = 0.0
-            equation = str(result)
+            # Multiplies last digit in equation by -1 and replaces existing last digit
+            elif buttonText == "+/-":
+                lastDigit = float(equation.split()[-1])
+                lastDigit = lastDigit * -1
+                equation = " ".join(equation.split()[:-1]) + " " + str(lastDigit)
+                
+            # Clears the entire calculator and memory
+            elif buttonText == "C":
+                result = ""
+                memory = 0.0
+                equation = str(result)
 
-        # Clears a single entry from calculator
-        elif buttonText == "CE":
-            equation = " ".join(equation.split()[:-1]) + " "
-            result = equation
+            # Clears a single entry from calculator
+            elif buttonText == "CE":
+                equation = " ".join(equation.split()[:-1]) + " "
+                result = equation
 
-        # Quits the calculator
-        elif buttonText == "Quit":
-            click = ""
-            win.close()
-            pass
+            # Quits the calculator
+            elif buttonText == "Quit":
+                click = ""
+                win.close()
+                pass
 
 
-        # Handles the four memory buttons (add, subtract, recall, clear)
+            # Handles the four memory buttons (add, subtract, recall, clear)
 
-        #############################################################
+            #############################################################
 
-        elif buttonText == "M+":
-            memory = memory + float(solve(equation.split()))
-        elif buttonText == "M-":
-            memory = memory - float(solve(equation.split()))
-        elif buttonText == "MR":
-            equation = str(memory)
-        elif buttonText == "MC":
-            memory = 0.0
-            
-        ##############################################################
-            
-        # Concatenates equation string with whatever number is clicked.
-        else:
-            equation = equation + buttonText
+            elif buttonText == "M+":
+                memory = memory + float(solve(equation.split()))
+            elif buttonText == "M-":
+                memory = memory - float(solve(equation.split()))
+            elif buttonText == "MR":
+                equation = str(memory)
+            elif buttonText == "MC":
+                memory = 0.0
+                
+            ##############################################################
+                
+            # Concatenates equation string with whatever number is clicked.
+            else:
+                equation = equation + buttonText
+                
+        # If any errors are found (divide by zero), will display "error"
+        except:
+            equation = "Error"
             
         # After EACH button is pressed, the display's text is altered    
         text.setText(equation)
