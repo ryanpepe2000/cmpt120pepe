@@ -15,10 +15,10 @@ class TennisSimulation:
             match = TennisMatch(self.probA, self.probB)
             match.play()
             stats.update(match)
-        stats.printStats()
+        stats.printReport()
 
 def main():
-    ts = TennisSimulation(.6,.5,50)
+    ts = TennisSimulation(.9,.2,50)
     ts.run()
 
 main()
