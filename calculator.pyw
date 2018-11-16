@@ -2,7 +2,7 @@
 # This program builds a graphical calculator keypad
 from graphics import *
 from calculator_functions import *
-
+import sys
 # Creates buttons based on the coordinates in keyList array
 def createButton(values):
     p1 = Point(values[0] + .025, values[1] + .025)
@@ -110,9 +110,7 @@ def main():
 
             # Quits the calculator
             elif buttonText == "Quit":
-                click = ""
-                win.close()
-                pass
+                break
 
 
             # Handles the four memory buttons (add, subtract, recall, clear)
@@ -126,7 +124,7 @@ def main():
                 memory = memory - float(solve(equation.split()))
                 memText.setText("mem: " + str(memory))
             elif buttonText == "MR":
-                equation = str(memory)
+                equation = equation + str(memory)
                 memText.setText("mem: " + str(memory))
             elif buttonText == "MC":
                 memory = 0.0
@@ -145,9 +143,11 @@ def main():
         # After EACH button is pressed, the display's text is altered    
         text.setText(equation)
         print(equation)
-        
+    win.close()
+    sys.exit()
+    
 main()
 
-        
+
     
            
