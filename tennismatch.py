@@ -3,7 +3,7 @@ from random import random
 from tennisplayer import *
 # class to simulate a tennis match
 class TennisMatch:
-    def __init__(self,probA, probB):
+    def __init__(self, probA, probB):
         self.playerA = TennisPlayer(probA)
         self.playerB = TennisPlayer(probB)
 
@@ -22,11 +22,8 @@ class TennisMatch:
             serving = self.playerA
         return serving
 
-    def getScoreA(self):
-        return self.playerA.getScore()
-
-    def getScoreB(self):
-        return self.playerB.getScore()
+    def getScores(self):
+        return self.playerA.getScore(), self.playerB.getScore()
 
 # class to simulate a tennis set  
 class TennisSet:
