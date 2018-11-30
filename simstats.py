@@ -26,7 +26,7 @@ class SimStats:
         print("          wins (% total)   shutouts (% wins) ")
         print("--------------------------------------------")
         self.printLine("A", self.winsA, self.shutsA, n)
-        self.printLine("B", self.winsA, self.shutsA, n)
+        self.printLine("B", self.winsB, self.shutsB, n)
 
     def printLine(self, label, wins, shuts, n):
         template = "Player {0}:{1:5}   ({2:5.1%})  {3:11}     ({4})"

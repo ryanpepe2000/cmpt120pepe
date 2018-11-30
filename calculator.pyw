@@ -2,7 +2,19 @@
 # This program builds a graphical calculator keypad
 from graphics import *
 from calculator_functions import *
+from button import *
 import sys
+
+
+class Display:
+    """Class for elements of calculator display"""
+    def __init__(self):
+        pass
+class Calculator:
+    """ Encloses all the functionality of the calculator"""
+    def __init__(self):
+        pass
+        
 # Creates buttons based on the coordinates in keyList array
 def createButton(values):
     p1 = Point(values[0] + .025, values[1] + .025)

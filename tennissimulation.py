@@ -18,7 +18,10 @@ class TennisSimulation:
         stats.printReport()
 
 def main():
-    ts = TennisSimulation(.9,.2,50)
+    p1 = float(input("Enter the probability that tennis player A will win a game: "))
+    p2 = float(input("Enter the probability that tennis player B will win a game: "))
+    games = int(input("Enter the number of games to be simulated: "))
+    ts = TennisSimulation(p1,p2,games)
     ts.run()
 
 main()
