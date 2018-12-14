@@ -1,12 +1,13 @@
 # calculatorapp.pyw
 from graphics import *
 from button import *
+from math import *
 
 class CalculatorApp:
     """ Encloses all the functionality of the calculator (display and buttons are subclass)"""
     def __init__(self):
         self.win = GraphWin("Calculator", 300, 400)
-        self.win.setCoords(0.0, 0.0, 4.0, 7.0)
+        self.win.setCoords(0.0, 0.0, 4.0, 9.0)
         self.win.setBackground("navy")
         self.display = Display(self.win)
         self.keypad = Keypad(self.win)
@@ -25,10 +26,10 @@ class CalculatorApp:
             
 class Display:
     def __init__(self,win):
-        self.rect = Rectangle(Point(0.025,6.95), Point(3.975,6.05))
+        self.rect = Rectangle(Point(0.025,8.95), Point(3.975,8.05))
         self.rect.setFill("white")
         self.rect.draw(win)
-        self.text = Text(Point(2,6.5),"")
+        self.text = Text(Point(2,8.5),"")
         self.text.draw(win)
 
     def update(self, result):
@@ -56,14 +57,25 @@ class Keypad:
             Button(win, Point(1.5,3.5), 1, 1, "8", "navajoWhite"),
             Button(win, Point(2.5,3.5), 1, 1, "9", "navajoWhite"),
             Button(win, Point(3.5,3.5), 1, 1, "*", "orange"),
-            Button(win, Point(.5,4.5), 1, 1, "Quit", "orange"),
-            Button(win, Point(1.5,4.5), 1, 1, "C", "orange"),
-            Button(win, Point(2.5,4.5), 1, 1, "CE", "orange"),
+            Button(win, Point(.5,4.5), 1, 1, "(", "orange"),
+            Button(win, Point(1.5,4.5), 1, 1, ")", "orange"),
+            Button(win, Point(2.5,4.5), 1, 1, "x²", "orange"),
             Button(win, Point(3.5,4.5), 1, 1, "/", "orange"),
-            Button(win, Point(.5,5.5), 1, 1, "M+", "silver"),
-            Button(win, Point(1.5,5.5), 1, 1, "M-", "silver"),
-            Button(win, Point(2.5,5.5), 1, 1, "MR", "silver"),
-            Button(win, Point(3.5,5.5), 1, 1, "MC", "silver")
+            Button(win, Point(.5,5.25), 1, .5, "sin", "orange"),
+            Button(win, Point(1.5,5.25), 1, .5, "cos", "orange"),
+            Button(win, Point(2.5,5.25), 1, .5, "tan", "orange"),
+            Button(win, Point(3.5,5.5), 1, 1, "1 / x", "orange"),
+            Button(win, Point(.5,5.75), 1, .5, "asin", "orange"),
+            Button(win, Point(1.5,5.75), 1, .5, "acos", "orange"),
+            Button(win, Point(2.5,5.75), 1, .5, "atan", "orange"),
+            Button(win, Point(.5,6.5), 1, 1, "Quit", "dimgrey"),
+            Button(win, Point(1.5,6.5), 1, 1, "C", "dimgrey"),
+            Button(win, Point(2.5,6.5), 1, 1, "Del", "dimgrey"),
+            Button(win, Point(3.5,6.5), 1, 1, "ln(x)", "orange"),
+            Button(win, Point(.5,7.5), 1, 1, "M+", "silver"),
+            Button(win, Point(1.5,7.5), 1, 1, "M-", "silver"),
+            Button(win, Point(2.5,7.5), 1, 1, "MR", "silver"),
+            Button(win, Point(3.5,7.5), 1, 1, "MC", "silver")
             ]
         
         
@@ -86,7 +98,7 @@ class CalculatorEngine:
             if key in ["0","1","2","3","4","5","6","7","8","9", "."]:
                 self.equation = self.equation + key
                 return self.equation
-            elif key in ["*", "/", "+", "-"]:
+            elif key in ["*", "/", "+", "-","(",")"]:
                 self.equation = self.equation + " " + key + " "
                 return self.equation
             elif key == "+/-":
@@ -105,6 +117,51 @@ class CalculatorEngine:
                 self.win.close()
             elif key == "=":
                 self.equation = str(self.__solve(self.equation))
+                return self.equation
+            elif key == "sin":
+                lastDigit = float(self.equation.split()[-1])
+                lastDigit = sin(lastDigit)
+                self.equation = " ".join(self.equation.split()[:-1]) + " " + str(lastDigit)
+                return self.equation
+            elif key == "cos":
+                lastDigit = float(self.equation.split()[-1])
+                lastDigit = cos(lastDigit)
+                self.equation = " ".join(self.equation.split()[:-1]) + " " + str(lastDigit)
+                return self.equation
+            elif key == "tan":
+                lastDigit = float(self.equation.split()[-1])
+                lastDigit = tan(lastDigit)
+                self.equation = " ".join(self.equation.split()[:-1]) + " " + str(lastDigit)
+                return self.equation
+            elif key == "asin":
+                lastDigit = float(self.equation.split()[-1])
+                lastDigit = asin(lastDigit)
+                self.equation = " ".join(self.equation.split()[:-1]) + " " + str(lastDigit)
+                return self.equation
+            elif key == "acos":
+                lastDigit = float(self.equation.split()[-1])
+                lastDigit = acos(lastDigit)
+                self.equation = " ".join(self.equation.split()[:-1]) + " " + str(lastDigit)
+                return self.equation
+            elif key == "atan":
+                lastDigit = float(self.equation.split()[-1])
+                lastDigit = atan(lastDigit)
+                self.equation = " ".join(self.equation.split()[:-1]) + " " + str(lastDigit)
+                return self.equation
+            elif key == "1 / x":
+                lastDigit = float(self.equation.split()[-1])
+                lastDigit = 1 / lastDigit
+                self.equation = " ".join(self.equation.split()[:-1]) + " " + str(lastDigit)
+                return self.equation
+            elif key == "x²":
+                lastDigit = float(self.equation.split()[-1])
+                lastDigit = lastDigit ** 2
+                self.equation = " ".join(self.equation.split()[:-1]) + " " + str(lastDigit)
+                return self.equation
+            elif key == "ln(x)":
+                lastDigit = float(self.equation.split()[-1])
+                lastDigit = log(lastDigit)
+                self.equation = " ".join(self.equation.split()[:-1]) + " " + str(lastDigit)
                 return self.equation
             elif key == "M+":
                 self.memory = self.memory + float(self.equation)
