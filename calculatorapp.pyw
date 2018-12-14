@@ -116,7 +116,7 @@ class CalculatorEngine:
                 result = ""
                 self.equation = str(result)
                 return self.equation
-            elif key == "CE":
+            elif key == "Del":
                 self.equation = " ".join(self.equation.split()[:-1]) + " "
                 return self.equation
             elif key == "Quit":
@@ -178,10 +178,12 @@ class CalculatorEngine:
             elif key == "MC":
                 self.memory = 0.0
             elif key == "=":
-                self.equation = self.equation.split()
-                print(self.equation)
+                self.equation = self.equation.split()  
+                self.equation = ["("] + self.equation               # Adds parentheses to 
+                self.equation.append(")")                           # enclose expression
                 self.equation = str(self.__answer(self.equation))
                 return self.equation
+    
         except:
             self.equation = ""
             return "Error"
@@ -214,7 +216,10 @@ class CalculatorEngine:
                     break
         
         return equation[0]
-        
+
+    #
+    #  RECURSIVE PARENTHESES FUNCTION
+    #
     def __parenthesis(self, ex):
         if not "(" in ex and not ")" in ex:
             return ex
@@ -222,11 +227,12 @@ class CalculatorEngine:
         last = len(ex) - 1 - ex[::-1].index(")")
         return self.__parenthesis(ex[first+1:last])
 
+    # While parentheses are still in list, continue recursively solving inner parentheses
     def __answer(self, ex):
         while "(" in ex or ")" in ex:
             first = "".join(ex).rindex("(")
             last = ex.index(")")
-            innerParen = str(self.__solve(parenthesis(ex)))
+            innerParen = str(self.__solve(self.__parenthesis(ex)))
             ex[first] = innerParen
             del ex[first+1:last+1]
         return ex[0]  
