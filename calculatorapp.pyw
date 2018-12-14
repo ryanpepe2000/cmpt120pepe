@@ -98,8 +98,14 @@ class CalculatorEngine:
             if key in ["0","1","2","3","4","5","6","7","8","9", "."]:
                 self.equation = self.equation + key
                 return self.equation
-            elif key in ["*", "/", "+", "-","(",")"]:
+            elif key in ["*", "/", "+", "-"]:
                 self.equation = self.equation + " " + key + " "
+                return self.equation
+            elif key == "(":
+                self.equation = self.equation + key + " "
+                return self.equation
+            elif key == ")":
+                self.equation = self.equation + " " + key
                 return self.equation
             elif key == "+/-":
                 lastDigit = float(self.equation.split()[-1])
@@ -115,9 +121,6 @@ class CalculatorEngine:
                 return self.equation
             elif key == "Quit":
                 self.win.close()
-            elif key == "=":
-                self.equation = str(self.__solve(self.equation))
-                return self.equation
             elif key == "sin":
                 lastDigit = float(self.equation.split()[-1])
                 lastDigit = sin(lastDigit)
@@ -174,6 +177,11 @@ class CalculatorEngine:
                 return self.equation
             elif key == "MC":
                 self.memory = 0.0
+            elif key == "=":
+                self.equation = self.equation.split()
+                print(self.equation)
+                self.equation = str(self.__answer(self.equation))
+                return self.equation
         except:
             self.equation = ""
             return "Error"
@@ -207,7 +215,21 @@ class CalculatorEngine:
         
         return equation[0]
         
+    def __parenthesis(self, ex):
+        if not "(" in ex and not ")" in ex:
+            return ex
+        first = ex.index("(")
+        last = len(ex) - 1 - ex[::-1].index(")")
+        return self.__parenthesis(ex[first+1:last])
 
+    def __answer(self, ex):
+        while "(" in ex or ")" in ex:
+            first = "".join(ex).rindex("(")
+            last = ex.index(")")
+            innerParen = str(self.__solve(parenthesis(ex)))
+            ex[first] = innerParen
+            del ex[first+1:last+1]
+        return ex[0]  
 
 def main():
     calc = CalculatorApp()
