@@ -41,41 +41,41 @@ class Keypad:
         self.win = win
         # Creates a list of each button as objects
         self.buttons = [
-            Button(win, Point(.5,.5), 1, 1, "+/-", "orange"), 
-            Button(win, Point(1.5,.5), 1, 1, "0", "navajoWhite"),
-            Button(win, Point(2.5,.5), 1, 1, ".", "orange"),
-            Button(win, Point(3.5,.5), 1, 1, "=", "orange"),
-            Button(win, Point(.5,1.5), 1, 1, "1", "navajoWhite"),
-            Button(win, Point(1.5,1.5), 1, 1, "2", "navajoWhite"),
-            Button(win, Point(2.5,1.5), 1, 1, "3", "navajoWhite"),
-            Button(win, Point(3.5,1.5), 1, 1, "+", "orange"),
-            Button(win, Point(.5,2.5), 1, 1, "4", "navajoWhite"),
-            Button(win, Point(1.5,2.5), 1, 1, "5", "navajoWhite"),
-            Button(win, Point(2.5,2.5), 1, 1, "6", "navajoWhite"),
-            Button(win, Point(3.5,2.5), 1, 1, "-", "orange"),
-            Button(win, Point(.5,3.5), 1, 1, "7", "navajoWhite"),
-            Button(win, Point(1.5,3.5), 1, 1, "8", "navajoWhite"),
-            Button(win, Point(2.5,3.5), 1, 1, "9", "navajoWhite"),
-            Button(win, Point(3.5,3.5), 1, 1, "*", "orange"),
-            Button(win, Point(.5,4.5), 1, 1, "(", "orange"),
-            Button(win, Point(1.5,4.5), 1, 1, ")", "orange"),
-            Button(win, Point(2.5,4.5), 1, 1, "x²", "orange"),
-            Button(win, Point(3.5,4.5), 1, 1, "/", "orange"),
-            Button(win, Point(.5,5.25), 1, .5, "sin", "orange"),
-            Button(win, Point(1.5,5.25), 1, .5, "cos", "orange"),
-            Button(win, Point(2.5,5.25), 1, .5, "tan", "orange"),
-            Button(win, Point(3.5,5.5), 1, 1, "1 / x", "orange"),
-            Button(win, Point(.5,5.75), 1, .5, "asin", "orange"),
-            Button(win, Point(1.5,5.75), 1, .5, "acos", "orange"),
-            Button(win, Point(2.5,5.75), 1, .5, "atan", "orange"),
-            Button(win, Point(.5,6.5), 1, 1, "Quit", "dimgrey"),
-            Button(win, Point(1.5,6.5), 1, 1, "C", "dimgrey"),
-            Button(win, Point(2.5,6.5), 1, 1, "Del", "dimgrey"),
-            Button(win, Point(3.5,6.5), 1, 1, "ln(x)", "orange"),
-            Button(win, Point(.5,7.5), 1, 1, "M+", "silver"),
-            Button(win, Point(1.5,7.5), 1, 1, "M-", "silver"),
-            Button(win, Point(2.5,7.5), 1, 1, "MR", "silver"),
-            Button(win, Point(3.5,7.5), 1, 1, "MC", "silver")
+            Button(win, Point(.5,.5), 1, 1, "+/-", "orange", 12), 
+            Button(win, Point(1.5,.5), 1, 1, "0", "navajoWhite", 12),
+            Button(win, Point(2.5,.5), 1, 1, "•", "orange", 12),
+            Button(win, Point(3.5,.5), 1, 1, "=", "orange", 12),
+            Button(win, Point(.5,1.5), 1, 1, "1", "navajoWhite", 12),
+            Button(win, Point(1.5,1.5), 1, 1, "2", "navajoWhite", 12),
+            Button(win, Point(2.5,1.5), 1, 1, "3", "navajoWhite", 12),
+            Button(win, Point(3.5,1.5), 1, 1, "+", "orange", 12),
+            Button(win, Point(.5,2.5), 1, 1, "4", "navajoWhite", 12),
+            Button(win, Point(1.5,2.5), 1, 1, "5", "navajoWhite", 12),
+            Button(win, Point(2.5,2.5), 1, 1, "6", "navajoWhite", 12),
+            Button(win, Point(3.5,2.5), 1, 1, "-", "orange", 12),
+            Button(win, Point(.5,3.5), 1, 1, "7", "navajoWhite", 12),
+            Button(win, Point(1.5,3.5), 1, 1, "8", "navajoWhite", 12),
+            Button(win, Point(2.5,3.5), 1, 1, "9", "navajoWhite", 12),
+            Button(win, Point(3.5,3.5), 1, 1, "*", "orange", 12),
+            Button(win, Point(.5,4.5), 1, 1, "(", "orange", 12),
+            Button(win, Point(1.5,4.5), 1, 1, ")", "orange", 12),
+            Button(win, Point(2.5,4.5), 1, 1, "x²", "orange", 12),
+            Button(win, Point(3.5,4.5), 1, 1, "/", "orange", 12),
+            Button(win, Point(.5,5.25), 1, .5, "sin", "orange", 12),
+            Button(win, Point(1.5,5.25), 1, .5, "cos", "orange", 12),
+            Button(win, Point(2.5,5.25), 1, .5, "tan", "orange", 12),
+            Button(win, Point(3.5,5.5), 1, 1, "1 / x", "orange", 12),
+            Button(win, Point(.5,5.75), 1, .5, "asin", "orange", 12),
+            Button(win, Point(1.5,5.75), 1, .5, "acos", "orange", 12),
+            Button(win, Point(2.5,5.75), 1, .5, "atan", "orange", 12),
+            Button(win, Point(.5,6.5), 1, 1, "Quit", "dimgrey", 12),
+            Button(win, Point(1.5,6.5), 1, 1, "C", "dimgrey", 12),
+            Button(win, Point(2.5,6.5), 1, 1, "Del", "dimgrey", 12),
+            Button(win, Point(3.5,6.5), 1, 1, "ln(x)", "orange", 12),
+            Button(win, Point(.5,7.5), 1, 1, "M+", "silver", 12),
+            Button(win, Point(1.5,7.5), 1, 1, "M-", "silver", 12),
+            Button(win, Point(2.5,7.5), 1, 1, "MR", "silver", 12),
+            Button(win, Point(3.5,7.5), 1, 1, "MC", "silver", 12)
             ]
         
         
@@ -95,8 +95,11 @@ class CalculatorEngine:
     def process(self, key):
         # Processes input and returns the current equation
         try:
-            if key in ["0","1","2","3","4","5","6","7","8","9", "."]:
+            if key in ["0","1","2","3","4","5","6","7","8","9"]:
                 self.equation = self.equation + key
+                return self.equation
+            elif key == "•":
+                self.equation = self.equation + "."
                 return self.equation
             elif key in ["*", "/", "+", "-"]:
                 self.equation = self.equation + " " + key + " "

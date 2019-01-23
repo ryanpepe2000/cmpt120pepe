@@ -3,7 +3,7 @@
 from graphics import *
 
 class Button:
-    def __init__(self, win, center, width, height, label, color):
+    def __init__(self, win, center, width, height, label, color, size):
         """ Creates a rectangular button, eg:
         qb = Button(myWin, Point(30, 25), 20, 10, 'Quit') """
 
@@ -18,6 +18,7 @@ class Button:
         self.rect.setFill(color)
         self.rect.draw(win)
         self.label = Text(center, label)
+        self.label.setSize(size)
         self.label.draw(win)
         # self.deactivate
         self.active = True
